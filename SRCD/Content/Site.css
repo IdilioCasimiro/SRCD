@@ -1,0 +1,142 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+h3 {
+    font-weight: 400 !important;
+    text-align: center;
+    margin: 2% auto;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.data-cols {
+    margin: 4vh 0 !important;
+}
+
+    .data-cols a {
+        text-decoration: none;
+    }
+
+#mapa {
+    height: 60vh;
+    width: 100%;
+}
+
+#carouselExampleCaptions {
+    margin: 0 !important;
+}
+
+    #carouselExampleCaptions img {
+        height: 50vh !important;
+        width: 100vw !important;
+    }
+
+.navbar {
+    margin-bottom: -1px !important;
+    background-color: rgba(0, 0, 0, .75) !important;
+}
+
+    .navbar a {
+        color: white !important;
+    }
+
+        .navbar a:hover {
+            color: cadetblue !important;
+        }
+
+    .navbar button {
+        color: white !important;
+    }
+
+#seccao-pesquisa {
+    margin: 5vh 0;
+}
+
+    #seccao-pesquisa form input {
+        border-radius: 5px 0 0 5px;
+    }
+
+    #seccao-pesquisa form button {
+        border-radius: 0px 5px 5px 0px;
+        background-color: rgba(0, 0, 0, .75) !important;
+    }
+
+#seccao-vantagens div {
+    padding: 5%;
+}
+
+    #seccao-vantagens div img {
+        padding: 5%;
+    }
+
+    #seccao-vantagens div:nth-child(2n+1) {
+        background-color: lightgray !important;
+    }
+
+    #seccao-vantagens div:nth-child(2) {
+        background-color: lightskyblue !important;
+    }
+
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, .75) !important;
+}
+
+    footer p {
+        color: white !important;
+    }

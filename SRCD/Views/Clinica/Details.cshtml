@@ -1,0 +1,196 @@
+﻿@model SRCD.Models.ClinicaViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h3>Detalhes - @Model.Nome</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <td><strong>Nome</strong></td>
+                <td>@Model.Nome</td>
+            </tr>
+            <tr>
+                <td><strong>Morada</strong></td>
+                <td>@Model.Morada</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td><strong>Telefone 1</strong></td>
+                <td>@Model.Telefone1</td>
+            </tr>
+            <tr>
+                <td><strong>Telefone 2</strong></td>
+                <td>@Model.Telefone2</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>Imagens e mapa</h3>
+    <hr />
+
+    <div class="row" style="margin: 2vh auto">
+        <div class="col-sm-4">
+            <img width="350" height="200" src="@Url.Action("ObterImagen1", new { id = Model.Id})" alt="@Model.Nome Imagem1" />
+        </div>
+        <div class="col-sm-4">
+            <img width="350" height="200" src="@Url.Action("ObterImagen2", "Clinica", new { id = Model.Id})" alt="@Model.Nome Imagem 2" />
+        </div>
+        <div class="col-sm-4">
+            <div id="mapa" style="height: 200px"></div>
+        </div>
+    </div>
+</div>
+<p class="text-success text-center">@TempData["StatusMessage"]</p>
+@Html.Partial("_SendMail", new SRCD.Models.MailMessageModel() { ClinicId = Model.Id, Destinatario = Model.Email})
+
+@section scripts {
+    <script>
+        function inicializar() {
+
+            var mapa = new google.maps.Map(document.getElementById('mapa'), {
+                zoom: 15,
+                center: { lat: @Model.Latitude, lng: @Model.Longitude }
+            });
+
+            var marker = new google.maps.Marker({
+                position: { lat: @Model.Latitude, lng: @Model.Longitude },
+                map: mapa,
+                title: ''
+            });
+
+            var infoWindowContent = '<div class="text-center">' +
+                '<p><strong>' + '@Model.Nome' + '</strong></p>' +
+                '<p>' + '@Model.Morada' + '</p>' +
+                '<p>' + '@Model.Email' + '</p>' +
+                '<p>' + '@Model.Telefone1' + '</p>' +
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: infoWindowContent
+            });
+
+            marker.addListener('click', function () {
+                infowindow.open(mapa, marker);
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlPwRKubMZIMDEj4ciL4O_qE68u5GkWYA&callback=inicializar">
+    </script>
+}
+
+
+
+@*@model SRCD.Models.Clinica
+
+    @{
+        ViewBag.Title = "Details";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Clinica</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefone1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telefone1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefone2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telefone2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Morada)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Morada)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Latitude)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Longitude)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Imagem1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Imagem2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem1ContentType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Imagem1ContentType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem2ContentType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Imagem2ContentType)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

@@ -1,0 +1,57 @@
+﻿@model SRCD.Models.MailMessageModel
+
+<div class="container">
+    <h3>Efectuar pedido de marcação de consulta</h3>
+    <hr />
+    <form action="@Url.Action("EnviarEmail", "Clinica")">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Nome">Nome</label>
+                    @Html.EditorFor(m => m.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome completo" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    @*<input asp-for="Nome" placeholder="Nome completo" class="form-control" />*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input name="Email" placeholder="Seu email" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nº de animais</label>
+                    <input type="number" name="NAnimais" placeholder="Quantos animais vai levar para a consulta?" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Data">Data da consulta</label>
+                    <input name="Data" type="date" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Mensagem">Mensagem</label>
+                    <textarea name="Mensagem" class="form-control" placeholder="Descreva o motivo da consulta"></textarea>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="Destinatario" value="@Model.Destinatario" />
+        <input type="hidden" name="ClinicId" value="@Model.ClinicId" />
+        <div class="row">
+
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-info">Enviar</button>
+            </div>
+        </div>
+    </form>
+    <hr />
+    <partial name="_StatusMessage" for="StatusMessage" />
+</div>
