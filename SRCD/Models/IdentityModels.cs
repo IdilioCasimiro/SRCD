@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SRCD.Models.Repositorio;
 
 namespace SRCD.Models
 {
@@ -23,6 +24,7 @@ namespace SRCD.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new SRCDInitializer());
         }
 
         public DbSet<Clinica> Clinicas { get; set; }
