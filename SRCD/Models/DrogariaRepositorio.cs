@@ -39,8 +39,8 @@ namespace SRCD.Models
                 drogaria.Imagem2 = model.Imagem2;
                 drogaria.Imagem2ContentType = model.Imagem2ContentType;
             }
-            
-            dbContext.Drogarias.Attach(drogaria);
+
+            dbContext.Entry(drogaria).State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
         }
 

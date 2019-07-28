@@ -1,22 +1,18 @@
-﻿@model SRCD.Models.ClinicaViewModel
+﻿@model SRCD.Models.DrogariaViewModel
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Create";
 }
 
 <div class="container">
-    <h3>Editar - @Model.Nome</h3>
-
-
-    @using (Html.BeginForm("Edit", "Clinica", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Create", "Drogaria", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
+            <h1>Adicionar drogaria</h1>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -91,12 +87,11 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Actualizar" class="btn btn-success" /> | <a class="btn btn-danger" href="@Url.Action("Index")">Cancelar</a>
+                    <input type="submit" value="Adicionar" class="btn btn-info" /> | <a href="@Url.Action("Index")" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
         </div>
     }
-
 </div>
 
 @section Scripts {

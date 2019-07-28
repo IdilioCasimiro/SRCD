@@ -1,4 +1,4 @@
-﻿@model SRCD.Models.ClinicaViewModel
+﻿@model SRCD.Models.DrogariaViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -40,15 +40,13 @@
             <img width="350" height="200" src="@Url.Action("ObterImagen1", new { id = Model.Id})" alt="@Model.Nome Imagem1" />
         </div>
         <div class="col-sm-4">
-            <img width="350" height="200" src="@Url.Action("ObterImagen2", "Clinica", new { id = Model.Id})" alt="@Model.Nome Imagem 2" />
+            <img width="350" height="200" src="@Url.Action("ObterImagen2", new { id = Model.Id})" alt="@Model.Nome Imagem 2" />
         </div>
         <div class="col-sm-4">
             <div id="mapa" style="height: 200px"></div>
         </div>
     </div>
 </div>
-<p class="text-success text-center">@TempData["StatusMessage"]</p>
-@Html.Partial("_SendMail", new SRCD.Models.MailMessageModel() { ClinicId = Model.Id, Destinatario = Model.Email})
 
 @section scripts {
     <script>

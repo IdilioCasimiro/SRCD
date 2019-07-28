@@ -73,12 +73,12 @@
         @foreach (var clinica in Model)
         {
             <div class="col-md-12 col-lg-4 data-cols">
-                <a asp-action="Details" asp-controller="Clinica" asp-route-id="@clinica.Id">
+                <a href="@Url.Action("Details", "Clinica", new { id = clinica.Id})">
                     <img height="200" width="350" src="@Url.Action("ObterImagen1", "Clinica", new { Id = clinica.Id})" alt="@clinica.Nome" />
                 </a>
                 <div class="text-center">
                     <hr />
-                    <a asp-action="Details" asp-controller="Clinica" asp-route-id="@clinica.Id">
+                    <a href="@Url.Action("Details", "Clinica", new { id = clinica.Id})">
                         <p class="text-info"><strong>@clinica.Nome</strong></p>
                     </a>
                     <p class="small">@clinica.Morada</p>
@@ -105,12 +105,12 @@
         @foreach (var drogaria in ViewBag.Drogarias)
         {
         <div class="col-md-12 col-lg-4 data-cols">
-            <a asp-action="Details" asp-controller="Drogaria" asp-route-id="@drogaria.Id">
+            <a href="@Url.Action("Details", "Drogaria", new { id = drogaria.Id})">
                 <img height="200" width="350" src="@Url.Action("ObterImagen1", "Drogaria", new { Id = drogaria.Id})" alt="@drogaria.Nome" />
             </a>
             <div class="text-center">
                 <hr />
-                <a asp-action="Details" asp-controller="Drogaria" asp-route-id="@drogaria.Id">
+                <a href="@Url.Action("Details", "Drogaria", new { id = drogaria.Id})">
                     <p class="text-info"><strong>@drogaria.Nome</strong></p>
                 </a>
                 <p class="small">@drogaria.Morada</p>

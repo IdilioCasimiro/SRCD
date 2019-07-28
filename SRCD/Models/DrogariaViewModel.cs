@@ -17,13 +17,13 @@ namespace SRCD.Models
         public string Morada { get; set; }
         //public List<string> Horarios { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N3}")]
-        public float? Latitude { get; set; }
-        public float? Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
 
         [Display(Name = "Imagem 1")]
-        public HttpPostedFile Imagem1 { get; set; }
+        public HttpPostedFileBase Imagem1 { get; set; }
 
         [Display(Name = "Imagem 2")]
-        public HttpPostedFile Imagem2 { get; set; }
+        public HttpPostedFileBase Imagem2 { get; set; }
     }
 }

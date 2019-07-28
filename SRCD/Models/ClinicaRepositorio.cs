@@ -41,7 +41,7 @@ namespace SRCD.Models.Repositorio
                 clinica.Imagem2ContentType = model.Imagem2ContentType;
             }
 
-            dbContext.Clinicas.Attach(clinica);
+            dbContext.Entry(clinica).State = EntityState.Modified;
             await dbContext.SaveChangesAsync();
         }
 

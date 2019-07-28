@@ -18,8 +18,8 @@ namespace SRCD.Models
         public string Telefone2 { get; set; }
         public string Morada { get; set; }
         //public List<string> Horarios { get; set; }
-        public float? Latitude { get; set; }
-        public float? Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
 
         public byte[] Imagem1 { get; set; }
         public byte[] Imagem2 { get; set; }

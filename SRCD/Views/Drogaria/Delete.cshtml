@@ -1,4 +1,4 @@
-﻿@model SRCD.Models.Clinica
+﻿@model SRCD.Models.Drogaria
 
 @{
     ViewBag.Title = "Delete";
@@ -7,7 +7,7 @@
 <div class="container">
     <h3>Eliminar - @Model.Nome</h3>
 
-    <h3>Tem a certeza que pretende eliminar esta clínica?</h3>
+    <h3>Tem a certeza que pretende eliminar esta drogaria?</h3>
     <div>
         <hr />
         <dl class="dl-horizontal">
@@ -58,7 +58,7 @@
 
             <div class="form-actions no-color">
                 <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-                @Html.ActionLink("Cancelar", "Index", "Clinica", new { @class = "btn btn-info" })
+                @Html.ActionLink("Cancelar", "Index", "Drogaria", new { @class = "btn btn-info"})
             </div>
         }
     </div>

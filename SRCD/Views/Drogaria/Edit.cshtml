@@ -1,4 +1,4 @@
-﻿@model SRCD.Models.ClinicaViewModel
+﻿@model SRCD.Models.DrogariaViewModel
 
 @{
     ViewBag.Title = "Editar";
@@ -8,7 +8,7 @@
     <h3>Editar - @Model.Nome</h3>
 
 
-    @using (Html.BeginForm("Edit", "Clinica", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Drogaria", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

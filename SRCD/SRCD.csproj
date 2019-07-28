@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClinicaController.cs" />
+    <Compile Include="Controllers\DrogariaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -319,6 +320,11 @@
     <Content Include="Views\Clinica\Details.cshtml" />
     <Content Include="Views\Clinica\Edit.cshtml" />
     <Content Include="Views\Clinica\Index.cshtml" />
+    <Content Include="Views\Drogaria\Create.cshtml" />
+    <Content Include="Views\Drogaria\Delete.cshtml" />
+    <Content Include="Views\Drogaria\Details.cshtml" />
+    <Content Include="Views\Drogaria\Edit.cshtml" />
+    <Content Include="Views\Drogaria\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

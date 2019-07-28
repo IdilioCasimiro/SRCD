@@ -9,7 +9,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <p>
-            <a asp-action="Create" class="btn btn-info">+ Adicionar clínica</a>
+            <a href="@Url.Action("Create")" class="btn btn-info">+ Adicionar clínica</a>
         </p>
     }
 
@@ -79,16 +79,15 @@
                 success: function (data) {
                     data.forEach((element) => {
                         var marker = new google.maps.Marker({
-                            position: {lat: element.latitude, lng: element.longitude},
+                            position: { lat: parseFloat(element.Latitude), lng: parseFloat(element.Longitude) },
                             map: mapa,
                             title: element.nome
                         });
-
                         var infoWindowContent = '<div class="text-center">' +
-                            '<p><strong>' + element.nome + '</strong></p>' +
-                            '<p>' + element.morada + '</p>' +
-                            '<p>' + element.email + '</p>' +
-                            '<p>' + element.telefone1 + '</p>' +
+                            '<p><strong>' + element.Nome + '</strong></p>' +
+                            '<p>' + element.Morada + '</p>' +
+                            '<p>' + element.Email + '</p>' +
+                            '<p>' + element.Telefone1 + '</p>' +
                             '</div>';
 
                         var infowindow = new google.maps.InfoWindow({

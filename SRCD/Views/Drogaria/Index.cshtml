@@ -1,0 +1,112 @@
+﻿@model IEnumerable<SRCD.Models.DrogariaViewModel>
+@using SRCD.Models
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+
+    <h1>Drogarias</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-info">+ Adicionar drogaria</a>
+        </p>
+    }
+
+    <!-- ********************* BARRA DE PESQUISA **************-->
+    <div class="container">
+        <div class="row" id="seccao-pesquisa">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" id="coluna-pesquisa">
+                @using (Html.BeginForm("Search", "Drogaria", FormMethod.Get, new { @class = "form-inline" }))
+                {
+                    <input type="text" name="name" placeholder="Pesquisar drogarias" class="form-control form-control-md" />
+                    <button type="submit" class="btn btn-info">Pesquisar</button>
+                }
+                @*<form class="form-inline" action="@Url.Action("Search")"></form>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var drogaria in Model)
+        {
+            <div class="col-md-12 col-lg-4 data-cols">
+                <a href="@Url.Action("Details", new { id = drogaria.Id })">
+                    <img height="200" width="350" src="@Url.Action("ObterImagen1", new { Id = drogaria.Id})" alt="@drogaria.Nome" />
+                </a>
+                <div class="text-center">
+                    <hr />
+                    <a href="@Url.Action("Details", new { id = drogaria.Id })">
+                        <p class="text-info"><strong>@drogaria.Nome</strong></p>
+                    </a>
+                    <p class="small">@drogaria.Morada</p>
+                    <p class="small">@drogaria.Email</p>
+                    <p class="small">@drogaria.Telefone1</p>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Edit", "Drogaria", new ClinicaViewModel() { Id = drogaria.Id })" class="btn btn-info btn-sm">Editar</a>
+                        <a href="@Url.Action("Delete", "Drogaria", new ClinicaViewModel() { Id = drogaria.Id })" class="btn btn-danger btn-sm">Eliminar</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="mapa"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function inicializar() {
+
+            var mapa = new google.maps.Map(document.getElementById('mapa'), {
+                zoom: 15,
+                center: { lat: -8.824213, lng: 13.224850 }
+            });
+
+            $.ajax({
+                url: '@Url.Action("ObterDrogarias", "Drogaria")',
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    data.forEach((element) => {
+                        var marker = new google.maps.Marker({
+                            position: { lat: parseFloat(element.Latitude), lng: parseFloat(element.Longitude) },
+                            map: mapa,
+                            title: element.nome
+                        });
+
+                        var infoWindowContent = '<div class="text-center">' +
+                            '<p><strong>' + element.Nome + '</strong></p>' +
+                            '<p>' + element.Morada + '</p>' +
+                            '<p>' + element.Email + '</p>' +
+                            '<p>' + element.Telefone1 + '</p>' +
+                            '</div>';
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: infoWindowContent
+                        });
+
+                        marker.addListener('click', function () {
+                            infowindow.open(mapa, marker);
+                        });
+                    });
+                },
+                error: function () {
+                    alert("Não foi possível obter as coordenadas do mapa!!!");
+                }
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlPwRKubMZIMDEj4ciL4O_qE68u5GkWYA&callback=inicializar">
+    </script>
+}
